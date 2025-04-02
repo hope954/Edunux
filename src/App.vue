@@ -6,6 +6,8 @@
   <router-view />
 </template>
 
-<style scoped>
-
+<style lang="less" scoped>
+#app{
+  width: 100%;
+}
 </style>

@@ -1,19 +1,15 @@
 <template>
-    <el-header>
+    <el-header >
         <div class="l-content">
-            <el-button size="small">
-                <el-icon size="20">
-                    <Menu />
-                </el-icon>
+            <el-button size="middle">
+                <el-icon><Menu /></el-icon>
             </el-button>
+            <h3>shouye</h3>
         </div>
         <div class="r-content">
             <el-dropdown>
                 <span class="el-dropdown-link">
-                    Dropdown List
-                    <el-icon class="el-icon--right">
-                        <arrow-down />
-                    </el-icon>
+                    <img class="user" :src="getImgSrc('user')" alt="" />
                 </span>
                 <template #dropdown>
                     <el-dropdown-menu>
@@ -30,6 +26,47 @@
 </template>
 <script>
 export default{
-
+    setup(){
+        //写一个函数实现静态资源的引入
+        const getImgSrc =(user)=>{
+            return new URL (`../assets/image/${user}.png`, import.meta.url).href;
+        };
+        return{
+            getImgSrc,
+        };
+    }
 }
 </script>
+<style lang="less" scoped>
+.el-header{
+    --el-header-padding: 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    width: 100%;
+    height: 100%;
+    padding-top: 0px;
+    padding-right: 20px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    background-color: #333;
+}
+.r-content{
+    .user{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        // margin-right:20px;
+    }
+}
+.l-content{
+    display: flex;
+    align-items: center;
+    .el-button{
+        margin-right:20px;
+        margin-left: 20px;
+    }
+}
+
+
+</style>

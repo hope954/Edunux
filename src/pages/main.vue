@@ -1,11 +1,13 @@
 <template>
     
     <div class="common-layout">
-      <el-container>
-        <el-header>Header</el-header>
-        <el-container>
-          <common-aside />
-          <common-header />
+      <el-container class="lay-container">
+        
+        <el-aside style="--el-aside-width:1000px:"><common-aside /></el-aside>
+        <el-container class="r-container">
+          <el-header style="padding-left: 0; padding-right: 0;">
+            <common-header />
+          </el-header>
           <el-main>
             <router-view /> 
           </el-main> 
@@ -26,3 +28,19 @@ export default defineComponent({
     },
 })
 </script>
+<style lang="less" scoped>
+.r-container{
+  flex-wrap: wrap;
+}
+.common-layout{
+  height: 100%;
+  width: 100%;
+  & > .el-container{
+    height: 100%;
+    width: 100%;
+    & > .el-aside{
+      height: 100%; 
+    }
+  }
+}
+</style>
