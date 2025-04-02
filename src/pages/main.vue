@@ -4,7 +4,7 @@
       <el-container>
         <el-header>Header</el-header>
         <el-container>
-          <el-aside width="200px">Aside</el-aside>
+          <common-aside />
           <common-header />
           <el-main>
             <router-view /> 
@@ -18,9 +18,11 @@
 <script>
 import { defineComponent } from "vue";
 import CommonHeader from '../components/CommonHeader.vue'
+import CommonAside from "../components/CommonAside.vue";
 export default defineComponent({
     components:{
-        CommonHeader
+        CommonHeader,
+        CommonAside
     },
 })
 </script>
