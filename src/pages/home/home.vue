@@ -1,5 +1,5 @@
 <template>
-    <div></div>
+    <div>我是home啦啦啦</div>
     
 </template>
 
@@ -8,3 +8,5 @@ export default{
 
 }
 </script>
+<style lang="less" scoped>
+</style>

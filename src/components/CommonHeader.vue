@@ -1,10 +1,10 @@
 <template>
     <el-header >
-        <div class="l-content">
-            <el-button size="middle">
+        <div class="l-content" >
+            <el-button size="small" plain @click="handleCollpase()"  >
                 <el-icon><Menu /></el-icon>
             </el-button>
-            <h3>shouye</h3>
+            <h3>首页</h3>
         </div>
         <div class="r-content">
             <el-dropdown>
@@ -25,20 +25,27 @@
     </el-header>
 </template>
 <script>
+import { defineComponent } from 'vue';
+import {useStore} from 'vuex'
 export default{
     setup(){
+        let store = useStore()
         //写一个函数实现静态资源的引入
         const getImgSrc =(user)=>{
             return new URL (`../assets/image/${user}.png`, import.meta.url).href;
         };
+        let handleCollpase=()=>{
+            store.commit("updateIsCollapse");
+        }
         return{
             getImgSrc,
+            handleCollpase
         };
     }
 }
 </script>
 <style lang="less" scoped>
-.el-header{
+header{
     --el-header-padding: 0 0;
     display: flex;
     justify-content: space-between;
@@ -65,6 +72,9 @@ export default{
     .el-button{
         margin-right:20px;
         margin-left: 20px;
+    }
+    h3{
+        color: #fff;
     }
 }
 

@@ -1,6 +1,6 @@
 <template>
-    <el-aside width=200px>
-        <el-menu class="el-menu-vertical-demo" background-color="#9fa1a4" text-color="#fff">
+    <el-aside :width="$store.state.isCollapse?'180px':'64px'">
+        <el-menu class="el-menu-vertical-demo" background-color="#545c64" text-color="#fff" :collapse="!$store.state.isCollapse" :collapse-transition="false">
             <el-menu-item :index="item.path" v-for="item in noChildren()" :key="item.path">
                 <component class="icons" :is="item.icon"></component>
                 <span>{{ item.label }}</span>
@@ -86,17 +86,19 @@ export default{
 }
 </script>
 <style lang="less" scoped>
-.el-aside{
-  width: 200px;
-} 
-
+// .el-aside{
+//   width: 200px;
+// } 
 .icons{
     width: 16px;
     height: 16px;
     /* background-color: #9fa1a4; */
 }
 .el-menu-vertical-demo{
-  height: 600px;
-  background-color:#9fa1a4;
+  height: 900px;
+  background-color:#545c64;
+}
+.el-menu{
+  border: none;
 }
 </style>
