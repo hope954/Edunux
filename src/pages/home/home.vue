@@ -62,7 +62,7 @@ export default defineComponent({
     },
 });
 </script>
-<style lang="less" scoped>
+<style lang="less" scoped >
 .home{
     .user{
         display: flex;

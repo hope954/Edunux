@@ -1,10 +1,20 @@
 <template>
-    <el-header >
-        <div class="l-content" >
-            <el-button size="small" plain @click="handleCollpase()"  >
-                <el-icon><Menu /></el-icon>
+    <el-header>
+        <div class="l-content">
+            <el-button size="small" plain @click="handleCollpase()">
+                <el-icon>
+                    <Menu />
+                </el-icon>
             </el-button>
-            <h3>首页</h3>
+            <!-- <el-breadcrumb separator="/">
+                <el-breadcrumb-item :to="{ path: '/' }">homepage</el-breadcrumb-item>
+                <el-breadcrumb-item>
+                    <a href="/">promotion management</a>
+                </el-breadcrumb-item>
+                <el-breadcrumb-item>promotion list</el-breadcrumb-item>
+                <el-breadcrumb-item>promotion detail</el-breadcrumb-item>
+            </el-breadcrumb> -->
+            <!-- <h3>shouye</h3> -->
         </div>
         <div class="r-content">
             <el-dropdown>
