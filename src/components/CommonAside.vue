@@ -1,7 +1,9 @@
 <template>
     <el-aside :width="$store.state.isCollapse?'180px':'64px'">
         <el-menu class="el-menu-vertical-demo" background-color="#545c64" text-color="#fff" :collapse="!$store.state.isCollapse" :collapse-transition="false">
-            <el-menu-item :index="item.path" v-for="item in noChildren()" :key="item.path">
+          <h3 v-show="$store.state.isCollapse">Edunux双创管理</h3>  
+          <h3 v-show="!$store.state.isCollapse">Edunux</h3>
+          <el-menu-item :index="item.path" v-for="item in noChildren()" :key="item.path" @click="clickMenu(item)">
                 <component class="icons" :is="item.icon"></component>
                 <span>{{ item.label }}</span>
             </el-menu-item>
@@ -11,7 +13,7 @@
                     <span>{{ item.label }}</span>
                 </template>
                 <el-menu-item-group>
-                    <el-menu-item :index="subItem.path" v-for="(subItem,subIndex) in item.children" :key="subIndex">
+                    <el-menu-item :index="subItem.path" v-for="(subItem,subIndex) in item.children" :key="subIndex"  @click="clickMenu(subItem)">
                         <component class="icons" :is="subItem.icon"></component>
                         <span>{{ subItem.label }}</span>
                     </el-menu-item>
@@ -26,6 +28,7 @@
     </el-aside>
 </template>
 <script>
+import {useRouter} from 'vue-router' 
 export default{
     setup(){
         const list = [
@@ -71,6 +74,7 @@ export default{
           ],
         },
         ];
+        const router =useRouter();
         //两个方法，判断是否有二级菜单
         const noChildren = () =>{
             return list.filter((item)=>!item.children);
@@ -78,9 +82,16 @@ export default{
         const hasChildren = () =>{
             return list.filter((item)=>item.children);
         };
+        const clickMenu = (item ) =>{
+            router.push({
+              name:item.name,
+            });
+
+        };
         return {
             noChildren,
             hasChildren,
+            clickMenu,
         };
     }
 }
@@ -95,10 +106,16 @@ export default{
     /* background-color: #9fa1a4; */
 }
 .el-menu-vertical-demo{
-  height: 900px;
+  height: 2000px;
   background-color:#545c64;
 }
 .el-menu{
   border: none;
+  h3{
+    line-height: 48px;
+    color: #fff;
+    text-align: center;
+    margin-top: 10px;
+  }
 }
 </style>

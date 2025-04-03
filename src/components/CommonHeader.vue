@@ -52,9 +52,9 @@ header{
     align-items:center;
     width: 100%;
     height: 100%;
-    padding-top: 0px;
+    padding-top: 10px;
     padding-right: 20px;
-    padding-bottom: 0px;
+    padding-bottom: 10px;
     padding-left: 0px;
     background-color: #333;
 }
