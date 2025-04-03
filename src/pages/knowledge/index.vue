@@ -1,6 +1,6 @@
 <template>
-    <div>我是page2啦啦啦</div>
-    
+    <div>我是知识库首页啦啦啦</div>
+    <router-view />
 </template>
 
 <script>

@@ -17,12 +17,12 @@
                         <component class="icons" :is="subItem.icon"></component>
                         <span>{{ subItem.label }}</span>
                     </el-menu-item>
-                    <el-menu-item index="1-2">item two</el-menu-item>
+                    <!-- <el-menu-item index="1-2">item two</el-menu-item> -->
                 </el-menu-item-group>
-                <el-sub-menu index="1-4">
+                <!-- <el-sub-menu index="1-4">
                 <template #title>item four</template>
                 <el-menu-item index="1-4-1">item one</el-menu-item>
-                </el-sub-menu>
+                </el-sub-menu> -->
             </el-sub-menu>
       </el-menu>
     </el-aside>
@@ -32,47 +32,239 @@ import {useRouter} from 'vue-router'
 export default{
     setup(){
         const list = [
+        // {
+        //   path: "/home",
+        //   name: "home",
+        //   label: "首页",
+        //   icon: "s-home",
+        //   url: "Home/Home",
+        // },
+        // {
+        //   // path: "/mall",
+        //   // name: "mall",
+        //   label: "知识库",
+        //   icon: "video-play",
+        //   // url: "MallManage/MallManage",
+        //   children:[
+        //     {
+        //       path: "/project/source",
+        //       name: "source",
+        //       label: "项目来源",
+        //       icon: "setting",
+        //       url: "Other/PageOne",
+        //     },
+        //     {
+        //       path: "/page2",
+        //       name: "page2",
+        //       label: "项目周期",
+        //       icon: "setting",
+        //       url: "Other/PageTwo",
+        //     },
+        //     {
+        //       path: "/page2",
+        //       name: "page2",
+        //       label: "项目组成员",
+        //       icon: "setting",
+        //       url: "Other/PageTwo",
+        //     },
+        //     {
+        //       path: "/page2",
+        //       name: "page2",
+        //       label: "项目指导教师",
+        //       icon: "setting",
+        //       url: "Other/PageTwo",
+        //     },
+        //     {
+        //       path: "/page2",
+        //       name: "page2",
+        //       label: "项目成果",
+        //       icon: "setting",
+        //       url: "Other/PageTwo",
+        //     },
+        //   ],
+        // },
+        // {
+        //   // path: "/user",
+        //   // name: "user",
+        //   label: "调查量表",
+        //   icon: "user",
+        //   // url: "UserManage/UserManage",
+        //   children:[
+        //     {
+        //       path: "/page1",
+        //       name: "page1",
+        //       label: "项目来源",
+        //       icon: "setting",
+        //       url: "Other/PageOne",
+        //     },
+        //     {
+        //       path: "/page2",
+        //       name: "page2",
+        //       label: "项目周期",
+        //       icon: "setting",
+        //       url: "Other/PageTwo",
+        //     },
+        //     {
+        //       path: "/page2",
+        //       name: "page2",
+        //       label: "项目组成员",
+        //       icon: "setting",
+        //       url: "Other/PageTwo",
+        //     },
+        //     {
+        //       path: "/page2",
+        //       name: "page2",
+        //       label: "项目指导教师",
+        //       icon: "setting",
+        //       url: "Other/PageTwo",
+        //     },
+        //     {
+        //       path: "/page2",
+        //       name: "page2",
+        //       label: "项目成果",
+        //       icon: "setting",
+        //       url: "Other/PageTwo",
+        //     },
+        //   ],
+        // },
+        // {
+        //   label: "项目概况",
+        //   icon: "location",
+        //   children: [
+        //     {
+        //       path: "/page1",
+        //       name: "page1",
+        //       label: "项目来源",
+        //       icon: "setting",
+        //       url: "Other/PageOne",
+        //     },
+        //     {
+        //       path: "/page2",
+        //       name: "page2",
+        //       label: "项目周期",
+        //       icon: "setting",
+        //       url: "Other/PageTwo",
+        //     },
+        //     {
+        //       path: "/page2",
+        //       name: "page2",
+        //       label: "项目组成员",
+        //       icon: "setting",
+        //       url: "Other/PageTwo",
+        //     },
+        //     {
+        //       path: "/page2",
+        //       name: "page2",
+        //       label: "项目指导教师",
+        //       icon: "setting",
+        //       url: "Other/PageTwo",
+        //     },
+        //     {
+        //       path: "/page2",
+        //       name: "page2",
+        //       label: "项目成果",
+        //       icon: "setting",
+        //       url: "Other/PageTwo",
+        //     },
+        //   ],
+        // },
         {
-          path: "/",
-          name: "home",
-          label: "首页",
-          icon: "s-home",
-          url: "Home/Home",
-        },
-        {
-          path: "/mall",
-          name: "mall",
-          label: "商品管理",
-          icon: "video-play",
-          url: "MallManage/MallManage",
-        },
-        {
-          path: "/user",
-          name: "user",
-          label: "用户管理",
-          icon: "user",
-          url: "UserManage/UserManage",
-        },
-        {
-          label: "其他",
-          icon: "location",
-          children: [
-            {
-              path: "/page1",
-              name: "page1",
-              label: "首页",
-              icon: "setting",
-              url: "Other/PageOne",
+                path: "/home",
+                name: "home",
+                label: "首页",
+                icon: "s-home",
+                url: "Home/Home"
             },
             {
-              path: "/page2",
-              name: "page2",
-              label: "首页",
-              icon: "setting",
-              url: "Other/PageTwo",
+                label: "知识库",
+                icon: "video-play",
+                children: [
+                    {
+                        path: "/knowledge/model",
+                        name: "knowledgeModel",
+                        label: "理论模型",
+                        icon: "setting"
+                    },
+                    {
+                        path: "/knowledge/ways",
+                        name: "knowledgeWays",
+                        label: "方法",
+                        icon: "setting"
+                    },
+                    {
+                        path: "/knowledge/indicator",
+                        name: "knowledgeIndicator",
+                        label: "指标体系",
+                        icon: "setting"
+                    }
+                ]
             },
-          ],
-        },
+            {
+                label: "调查量表",
+                icon: "user",
+                children: [
+                    {
+                        path: "/search/index",
+                        name: "searchIndex",
+                        label: "量表首页",
+                        icon: "setting"
+                    },
+                    {
+                        path: "/search/content",
+                        name: "searchContent",
+                        label: "量表内容",
+                        icon: "setting"
+                    },
+                    {
+                        path: "/search/result",
+                        name: "searchResult",
+                        label: "量表结果",
+                        icon: "setting"
+                    }
+                ]
+            },
+            {
+                label: "项目概况",
+                icon: "location",
+                children: [
+                    {
+                        path: "/project/source",
+                        name: "projectSource",
+                        label: "项目来源",
+                        icon: "setting"
+                    },
+                    {
+                        path: "/project/week",
+                        name: "projectWeek",
+                        label: "项目周期",
+                        icon: "setting"
+                    },
+                    {
+                        path: "/project/member",
+                        name: "projectMember",
+                        label: "项目组成员",
+                        icon: "setting"
+                    },
+                    {
+                        path: "/project/teacher",
+                        name: "projectTeacher",
+                        label: "项目指导教师",
+                        icon: "setting"
+                    },
+                    {
+                        path: "/project/result",
+                        name: "projectResult",
+                        label: "项目成果",
+                        icon: "setting"
+                    }
+                ]
+            },
+            {
+                path: "/user",
+                name: "user",
+                label: "用户",
+                icon: "user"
+            }
         ];
         const router =useRouter();
         //两个方法，判断是否有二级菜单

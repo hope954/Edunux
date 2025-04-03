@@ -1,5 +1,5 @@
 <template>
-    <div>我是page1啦啦啦</div>
+    <div>我是指导教师啦啦啦</div>
     
 </template>
 
