@@ -298,7 +298,8 @@ export default{
     /* background-color: #9fa1a4; */
 }
 .el-menu-vertical-demo{
-  height: 2000px;
+//   height:100%;
+  overflow: auto;
   background-color:#545c64;
 }
 .el-menu{

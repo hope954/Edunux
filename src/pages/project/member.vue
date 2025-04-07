@@ -76,6 +76,7 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 40px;
+    overflow: auto;
   }
   
   .member-card {

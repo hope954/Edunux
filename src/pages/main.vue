@@ -29,12 +29,14 @@ export default defineComponent({
 .el-container{
   flex-wrap: wrap;
   align-items: flex-start;
+  overflow: auto;
 }
 .common-layout{
-  height: 100%;
+  // overflow: scroll;//给页面增加滚动条，但样式上不够美观，在排查页面不能下拉的过程中添加用于测试的
+  // height: 100%;
   // width: 100%;
   & > .el-container{
-    height: 100%;
+    // height: 100%;
     // width: 100%;
     & > .el-aside{
       // height: 100%; 
