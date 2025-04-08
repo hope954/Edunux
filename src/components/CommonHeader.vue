@@ -61,13 +61,20 @@ header{
     justify-content: space-between;
     align-items:center;
     width: 100%;
-    height: 100%;
+    // width: auto; /* 确保头部宽度自适应 */
+    height: 100%; /* 确保头部高度自适应 */
+    // height: 100%;
     padding-top: 10px;
     padding-right: 20px;
     padding-bottom: 10px;
     padding-left: 0px;
     background-color: #333;
-}
+  }
+
+  .sidebar {
+    width: 100%;
+    min-width: auto;
+  }
 .r-content{
     .user{
         width: 40px;
