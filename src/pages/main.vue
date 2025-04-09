@@ -27,14 +27,14 @@ export default defineComponent({
 </script>
 <style lang="less">
 @media (max-width: 768px) {
-  .el-container {
-    flex-direction: column;
-  }
+  // .el-container {
+  //   flex-direction: column;
+  // }
 
-  .el-aside {
-    width: 100%;
-    min-width: auto;
-  }
+  // .el-aside {
+  //   width: 100%;
+  //   min-width: auto;
+  // }
 }
 .el-container{
   flex-wrap: wrap;
