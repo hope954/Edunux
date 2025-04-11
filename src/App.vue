@@ -14,7 +14,7 @@
 }
 #building{
   // overflow: auto;
-  background:url("./assets/image/backgroudpic.png");
+  background:url("./assets/image/backgroudpic2.jpg");
   width:100%;			//大小设置为100%
   height:100%;			//大小设置为100%
   top: 0;
