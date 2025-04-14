@@ -2,16 +2,16 @@
     <div>
         <router-view />
     </div>
-    <div>
+    <!-- <div>
         <el-row class="member" :gutter="20" style="display: flex;">
-            <el-col :span="24"> <!-- 修改为占满一行 -->
-                <div class="card-container"> <!-- 新增容器用于卡片布局 -->
+            <el-col :span="24"> <!-- 修改为占满一行 
+                <div class="card-container"> <!-- 新增容器用于卡片布局 
                     <el-card shadow="hover"  style="max-width: 300px; display: flex;">
                         <div class="user" style="display: flex;">
                             <img src="../../assets/image/touxiang.jpg" alt="">
                             <div class="userinfo">
                                 <!-- <p class="name">admin</p>
-                                <p class="role">超级管理院</p> -->
+                                <p class="role">超级管理院</p> 
                             </div>
                         </div>
                         <div class="login-info">
@@ -28,7 +28,7 @@
                             <img src="../../assets/image/user.png" alt="">
                             <div class="userinfo">
                                 <!-- <p class="name">admin</p>
-                                <p class="role">超级管理院</p> -->
+                                <p class="role">超级管理院</p> 
                             </div>
                         </div>
                         <div class="login-info">
@@ -45,7 +45,7 @@
                             <img src="../../assets/image/hezhao.jpg" alt="">
                             <div class="userinfo">
                                 <!-- <p class="name">admin</p>
-                                <p class="role">超级管理院</p> -->
+                                <p class="role">超级管理院</p> 
                             </div>
                         </div>
                         <div class="login-info">
@@ -60,7 +60,7 @@
                 </div>
             </el-col>
         </el-row>
-    </div>
+    </div> -->
         <!-- <el-row class="member" :gutter="20" style="display: flex;">
         <el-col :span="8" >
             <el-card shadow="hover"  style="max-width: 300px; display: flex;">
