@@ -2,16 +2,16 @@
     <div>
         <router-view />
     </div>
-    <!-- <div>
+    <div>
         <el-row class="member" :gutter="20" style="display: flex;">
-            <el-col :span="24"> <!-- 修改为占满一行 
-                <div class="card-container"> <!-- 新增容器用于卡片布局 
+            <el-col :span="24"> <!-- 修改为占满一行 -->
+                <div class="card-container"> <!-- 新增容器用于卡片布局 -->
                     <el-card shadow="hover"  style="max-width: 300px; display: flex;">
                         <div class="user" style="display: flex;">
                             <img src="../../assets/image/touxiang.jpg" alt="">
                             <div class="userinfo">
                                 <!-- <p class="name">admin</p>
-                                <p class="role">超级管理院</p> 
+                                <p class="role">超级管理院</p> -->
                             </div>
                         </div>
                         <div class="login-info">
@@ -28,7 +28,7 @@
                             <img src="../../assets/image/user.png" alt="">
                             <div class="userinfo">
                                 <!-- <p class="name">admin</p>
-                                <p class="role">超级管理院</p> 
+                                <p class="role">超级管理院</p> -->
                             </div>
                         </div>
                         <div class="login-info">
@@ -45,7 +45,7 @@
                             <img src="../../assets/image/hezhao.jpg" alt="">
                             <div class="userinfo">
                                 <!-- <p class="name">admin</p>
-                                <p class="role">超级管理院</p> 
+                                <p class="role">超级管理院</p> -->
                             </div>
                         </div>
                         <div class="login-info">
@@ -60,69 +60,9 @@
                 </div>
             </el-col>
         </el-row>
-    </div> -->
-        <!-- <el-row class="member" :gutter="20" style="display: flex;">
-        <el-col :span="8" >
-            <el-card shadow="hover"  style="max-width: 300px; display: flex;">
-                <div class="user" style="display: flex;">
-                    <img src="../../assets/image/touxiang.jpg" alt="">
-                    <div class="userinfo">
-                        <!-- <p class="name">admin</p>
-                        <p class="role">超级管理院</p> 
-                    </div>
-                </div>
-                <div class="login-info">
-                    <p>项目负责人<span>李睿彤</span></p>
-                    <div class="info">
-                        <p>西安电子科技大学</p>
-                        <p>大数据管理与应用</p>
-                    </div> 
-                </div>
-            </el-card>
-            <el-card shadow="hover" style="max-width: 300px; display: flex;">
-                <div class="user">
-                    <img src="../../assets/image/touxiang.jpg" alt="">
-                    <div class="userinfo">
-                        <!-- <p class="name">admin</p>
-                        <p class="role">超级管理院</p> 
-                    </div>
-                </div>
-                <div class="login-info">
-                    <p>项目成员<span>范怡雯</span></p>
-                    <div class="info">
-                        <p>西安电子科技大学</p>
-                        <p>大数据管理与应用</p>
-                    </div> 
-                </div>
-            </el-card>
-            <el-card shadow="hover" style="max-width: 300px">
-                <div class="user">
-                    <img src="../../assets/image/touxiang.jpg" alt="">
-                    <div class="userinfo">
-                         <p class="name">admin</p>
-                        <p class="role">超级管理院</p> 
-                    </div>
-                </div>
-                <div class="login-info">
-                    <p>项目成员<span>刘海桐</span></p>
-                    <div class="info">
-                        <p>西安电子科技大学</p>
-                        <p>大数据管理与应用</p>
-                    </div> 
-                </div>
-            </el-card> -->
-            <!-- <el-card shadow="hover" style="margin-top: 20px; height: 450px;">
-                <el-table :data="tableData">
-                    <el-table-column
-                    v-for="(val,key) in tableLabel" :key="key" :prop="key" :label="val">
-
-                    </el-table-column>
-                </el-table>
-            </el-card> -->
-        <!-- </el-col>
-        <el-col :span="10" ></el-col>
+    </div> 
     </el-row>
-    </div> -->
+    </div>
     
 </template>
 
@@ -183,10 +123,3 @@ export default{
     }
 }
 </style>
-<!-- <script>
-export default{
-
-}
-</script>
-<style lang="less">
-</style> -->
