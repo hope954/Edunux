@@ -23,11 +23,8 @@
                 </span>
                 <template #dropdown>
                     <el-dropdown-menu>
-                        <el-dropdown-item>个人中心</el-dropdown-item>
+                        <el-dropdown-item @click="goToUserPage()">个人中心</el-dropdown-item>
                         <el-dropdown-item>退出登录</el-dropdown-item>
-                        <!-- <el-dropdown-item>Action 3</el-dropdown-item> -->
-                        <!-- <el-dropdown-item disabled>Action 4</el-dropdown-item>
-                        <el-dropdown-item divided>Action 5</el-dropdown-item> -->
                     </el-dropdown-menu>
                 </template>
             </el-dropdown>
@@ -37,6 +34,7 @@
 <script>
 import { defineComponent } from 'vue';
 import {useStore} from 'vuex'
+import { useRouter } from 'vue-router';
 export default{
     setup(){
         let store = useStore()
@@ -46,10 +44,14 @@ export default{
         };
         let handleCollpase=()=>{
             store.commit("updateIsCollapse");
-        }
+        };
+        const goToUserPage = () => {
+            router.push('../pages/user/user.vue');
+        };
         return{
             getImgSrc,
-            handleCollpase
+            handleCollpase,
+            goToUserPage
         };
     }
 }

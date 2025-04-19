@@ -61,8 +61,6 @@
             </el-col>
         </el-row>
     </div> 
-    </el-row>
-    </div>
     
 </template>
 
