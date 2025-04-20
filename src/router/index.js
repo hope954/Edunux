@@ -102,6 +102,11 @@ const routes = [
                 component: () => import('../pages/search/index.vue'), // 明确指定文件
                 children: [
                     {
+                        path: 'result',
+                        name: 'searchStart',
+                        component: () => import('../pages/search/start.vue')
+                    },
+                    {
                         path: 'content',
                         name: 'searchContent',
                         component: () => import('../pages/search/content.vue')
@@ -116,6 +121,7 @@ const routes = [
                         name: 'searchResult',
                         component: () => import('../pages/search/result.vue')
                     }
+                    
                 ]
             },
             {

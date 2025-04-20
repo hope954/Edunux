@@ -1,5 +1,6 @@
 <template>
   <div>
+    <router-view />
     <h1>调查问卷</h1>
     <div v-for="(question, index) in questions" :key="index" class="content">
       <p>{{ question.question }}</p>

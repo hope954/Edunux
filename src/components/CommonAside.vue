@@ -204,8 +204,8 @@ export default{
                 icon: "user",
                 children: [
                     {
-                        path: "/search/index",
-                        name: "searchIndex",
+                        path: "/search/start",
+                        name: "searchStart",
                         label: "量表首页",
                         icon: "setting"
                     },
