@@ -215,7 +215,7 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 table {
     width: 100%;
     border-collapse: collapse;
