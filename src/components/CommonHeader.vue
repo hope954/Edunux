@@ -46,7 +46,9 @@ export default{
             store.commit("updateIsCollapse");
         };
         const goToUserPage = () => {
-            router.push('../pages/user/user.vue');
+            router.push({
+                name:"user"
+            });
         };
         return{
             getImgSrc,
