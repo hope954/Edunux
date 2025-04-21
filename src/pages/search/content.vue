@@ -15,7 +15,7 @@
       <div class="score-content">
         <p>你的问卷得分是: {{ calculateScore}}</p>
         <p>{{ getFeedback(calculateScore)}}</p>
-        <el-button @click="closeModal">关闭</el-button>
+        <el-button @click="closeModal" style=" margin-top: 12px;">关闭</el-button>
       </div>
     </div>
   </div>
@@ -252,6 +252,7 @@ h1{
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  line-height: 26px;
 }
 </style>    
 <!-- <template>
