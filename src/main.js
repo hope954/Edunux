@@ -15,7 +15,6 @@ app.use(router).use(store)
 app.use(ElementPlus)
 app.mount('#app')
 
-
-
-
-
+//引入echarts库
+import * as echarts from 'echarts';
+app.config.globalProperties.$echarts = echarts;
