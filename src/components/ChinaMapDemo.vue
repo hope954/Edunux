@@ -1,7 +1,9 @@
 <template>
   <div>
     <!-- 定义一个容器用于显示中国地图 -->
-    <div id="china-map" style="width: 800px;height:600px;"></div>
+    <div id="china-map" style="width: 800px;height:600px;">
+      
+    </div>
   </div>
 </template>
 
@@ -17,10 +19,14 @@ export default {
   mounted() {
     // 模拟不同地区的问卷数量数据
     const data = [
-      { name: '北京', value: 120 },
-      { name: '上海', value: 150 },
-      { name: '广东', value: 200 },
-      { name: '四川', value: 180 },
+      { name: '东北', value: 6  },
+      { name: '吉林', value: 6 },
+      { name: '黑龙江', value: 6 },
+      { name: '河北', value: 30 },
+      { name: '北京', value: 10 },
+      { name: '天津', value: 5 },
+      { name: '山西', value: 15 },
+      { name: '内蒙古', value: 1 },
       // 可以继续添加更多地区的数据
     ];
 
@@ -34,11 +40,14 @@ export default {
       },
       visualMap: {
         min: 0,
-        max: 250,
+        max: 50,
         left: 'left',
         top: 'bottom',
         text: ['高', '低'],
-        calculable: true
+        calculable: true,
+        inRange: {
+                    color: ['#e0f7fa', '#b3e5fc', '#81d4fa', '#4fc3f7', '#29b6f6']
+                }
       },
       series: [
         {
@@ -48,7 +57,19 @@ export default {
           label: {
             show: true
           },
-          data: data
+          data: data,
+          itemStyle: {
+                        normal: {
+                            areaColor: '#e0f7fa',
+                            borderColor: '#b3e5fc',
+                            borderWidth: 1
+                        },
+                        emphasis: {
+                            areaColor: '#4fc3f7',
+                            borderColor: '#29b6f6',
+                            borderWidth: 2
+                        }
+                    }
         }
       ]
     };
