@@ -8,9 +8,9 @@
 <script>
 import * as echarts from 'echarts';
 // 按需引入中国地图数据
-// import chinaJson from 'echarts/map/json/china.json';
+import chinaJson from 'echarts/map/json/china.json';
 // 注册中国地图
-// echarts.registerMap('china', chinaJson);
+echarts.registerMap('china', chinaJson);
 //5版本之后没有map文件，此时会出错，单独安装map或只在地图处使用4的版本即可解决该问题
 export default {
   name: 'ChinaMapDemo',
