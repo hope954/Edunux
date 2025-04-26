@@ -88,6 +88,7 @@ export default {
   padding: 30px 20px;
   max-width: 1200px;
   margin: 50px auto;
+  border-radius: 28px;
 }
 
 .page-heading {
@@ -156,17 +157,19 @@ export default {
   justify-content: space-between;
   margin-right: 50px;
   margin-left: 50px;
+  
 }
 
 .card-container el-card {
   flex: 1;
   background-color: #fff0f5;
-  border-radius: 15px;
+  border-radius: 30px;
   transition: transform 0.3s ease;
 }
 
 .card-container el-card:hover {
-  transform: scale(1.05);
+  transform: scale(1.2);
+  box-shadow: 0 10px 50px rgba(0, 0, 0, 0.6);
 }
 
 .user {

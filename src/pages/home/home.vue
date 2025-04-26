@@ -1,108 +1,92 @@
 <template>
-    <div>
+    <div class="home-page">
         <el-row class="home" :gutter="20">
             <el-col :span="8">
-                <div id="app">
-                    <ChinaMapDemo />
-                </div>
-                <el-card shadow="hover">
-                    <div class="user">
-                        <img src="../../assets/image/user.png" alt="">
-                        <div class="userinfo">
-                            <p class="name">admin</p>
-                            <p class="role">超级管理院</p>
-                        </div>
-                    </div>
-                    <div class="login-info">
-                        <p>时间<span>2025-4-01</span></p>
-                        <p>地点<span>西安</span></p>
-
-                    </div>
-                </el-card>
-                <el-card shadow="hover" style="margin-top: 20px; height: 450px;">
-                    <el-table :data="tableData">
-                        <el-table-column v-for="(val, key) in tableLabel" :key="key" :prop="key" :label="val">
-
-                        </el-table-column>
-                    </el-table>
-                </el-card>
                 <div id="app">
                     <EchartsDemo />
                 </div>
             </el-col>
-            <el-col :span="16"></el-col>
+            <el-col :span="8">
+                <div id="app">
+                    <ChinaMapDemo />
+                </div>
+            </el-col>
+            <el-col :span="8">
+                <div class="chart-container" id="pie-chart"></div>
+            </el-col>
+        </el-row>
+        <!-- 第二行 -->
+        <el-row :gutter="20" style="margin-top: 20px;">
+            <el-col :span="8">
+                <div id="app">
+                    <BarChart :chartData="[10, 20, 30, 40, 50]" :chartLabels="['A', 'B', 'C', 'D', 'E']" />
+                </div>
+
+            </el-col>
+            <el-col :span="8">
+                <div id="app">
+                    <LineChart :chartData="[15, 25, 35, 45, 55]" :chartLabels="['Mon', 'Tue', 'Wed', 'Thu', 'Fri']" />
+                </div>
+
+            </el-col>
+            <el-col :span="8">
+                <div id="app">
+                    <PieChart :chartData="[{ value: 30, name: 'A' }, { value: 70, name: 'B' }]" />
+                </div>
+
+            </el-col>
         </el-row>
     </div>
 </template>
 
+
+
 <script>
     import { progressProps } from 'element-plus';
-    import { defineComponent } from 'vue';
+    // import { defineComponent } from 'vue';
+    import { defineComponent, onMounted, onBeforeUnmount } from 'vue';
     import EchartsDemo from '../../components/EchartsDemo.vue';
     import ChinaMapDemo from '../../components/ChinaMapDemo.vue';
+    import BarChart from '../../components/barCharts.vue';
+    import LineChart from '../../components/lineCharts.vue';
+    import PieChart from '../../components/pieCharts.vue';
     export default defineComponent({
+
         setup() {
-            const tableData = [
-                {
-                    name: "Java",
-                    todayBuy: 100,
-                    monthBuy: 200,
-                    totalBuy: 300,
-                },
-                {
-                    name: "Python",
-                    todayBuy: 100,
-                    monthBuy: 200,
-                    totalBuy: 300,
-                }
-            ];
-            const tableLabel = {
-                name: "课程",
-                todayBuy: "今日购买",
-                monthBuy: "本月购买",
-                totalBuy: "总购买",
-            };
-            return {
-                tableData,
-                tableLabel,
-            };
+
         },
         name: 'App',
         components: {
             EchartsDemo,
-            ChinaMapDemo
+            ChinaMapDemo,
+            BarChart,
+            LineChart,
+            PieChart
         }
     });
+
 </script>
 <style lang="less" scoped>
-    .home {
-        .user {
-            display: flex;
-            align-items: center;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #ccc;
-            margin-bottom: 20px;
+    .home-page {
 
-            img {
-                width: 150px;
-                height: 150px;
-                border-radius: 50%;
-                margin-right: 40px;
-            }
-        }
-
-        .login-info {
-            p {
-                line-height: 30px;
-                font-size: 14px;
-                color: #999;
-
-                span {
-                    color: #666;
-                    margin-left: 60px;
-
-                }
-            }
-        }
+        background-image: url('../../assets/image/backgroud1.jpg');
+        width: auto;
+        /* 自动调整宽度 */
+        height: auto;
+        /* 自动调整高度 */
+        min-width: 1000px;
+        /* 设置最小宽度 */
+        min-height: 600px;
+        /* 设置最小高度 */
+        // display: flex;
+        justify-content: center;
+        align-items: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
     }
+
+    
+
+
 </style>
