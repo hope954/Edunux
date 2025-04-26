@@ -1,21 +1,20 @@
 <template>
-  <div>
-    <router-view />
-    <h1>调查问卷</h1>
-    <div v-for="(question, index) in questions" :key="index" class="content">
+  <div class="survey-container">
+    <h1 style="font-weight: 600; margin-bottom: 50px;">调查问卷</h1>
+    <div v-for="(question, index) in questions" :key="index" class="question-item" :style="{ backgroundColor: isQuestionAnswered[index] ? 'rgba(255, 228, 225, 0.8)' : '#fff' }">
       <p>{{ question.question }}</p>
-      <el-radio-group v-model="answers[index]" size="large">
+      <el-radio-group v-model="answers[index]" size="large" @change="onAnswerChange(index)">
         <el-radio :label="i" v-for="i in 5" :key="i" size="large">
           {{ i }} 分
         </el-radio>
       </el-radio-group>
     </div>
-    <el-button @click="submitSurvey" style="margin-left: 100px; margin-top: 26px;">提交问卷</el-button>
+    <el-button @click="submitSurvey" type="primary" size="large">提交问卷</el-button>
     <div v-if="isSubmitted" class="score-modal">
-      <div class="score-content">
-        <p>你的问卷得分是: {{ calculateScore}}</p>
-        <p>{{ getFeedback(calculateScore)}}</p>
-        <el-button @click="closeModal" style=" margin-top: 12px;">关闭</el-button>
+      <div class="score-content" >
+        <p>你的问卷得分是: {{ calculateScore }}</p>
+        <p style="margin: 10px;">{{ getFeedback(calculateScore) }}</p>
+        <el-button @click="closeModal" type="info" size="medium">关闭</el-button>
       </div>
     </div>
   </div>
@@ -23,7 +22,6 @@
 
 <script setup>
 import { ref, computed } from 'vue';
-// 如果你已经全局引入了 ElementPlus，这里的引入可以省略
 import { ElRadioGroup, ElRadio, ElButton } from 'element-plus';
 
 // 定义调查问卷问题
@@ -171,15 +169,17 @@ const questions = ref([
   },
   {
     question: '4.18通过学习，我形成了一定数量、质量的相关成果（如产品、论文、获奖、专利等）。'
-  },
+  }
 ]);
-
 
 // 存储用户答案
 const answers = ref(new Array(questions.value.length).fill(null));
 
 // 标记是否提交问卷
 const isSubmitted = ref(false);
+
+// 标记每个问题是否已回答
+const isQuestionAnswered = ref(new Array(questions.value.length).fill(false));
 
 // 计算得分
 const calculateScore = computed(() => {
@@ -209,31 +209,69 @@ const submitSurvey = () => {
   console.log('Answers:', answers.value);
   isSubmitted.value = true;
 };
+
 // 关闭模态框方法
 const closeModal = () => {
-    try {
-      console.log('尝试关闭模态框,当前 isSubmitted 的值:', isSubmitted.value);
-      isSubmitted.value = false;
-      console.log('关闭模态框后,isSubmitted 的值:', isSubmitted.value);
-    } catch (error) {
-      console.error('关闭模态框时发生错误:', error);
-    }
-  };
+  try {
+    console.log('尝试关闭模态框,当前 isSubmitted 的值:', isSubmitted.value);
+    isSubmitted.value = false;
+    console.log('关闭模态框后,isSubmitted 的值:', isSubmitted.value);
+  } catch (error) {
+    console.error('关闭模态框时发生错误:', error);
+  }
+};
+
+// 答案改变时的处理方法
+const onAnswerChange = (index) => {
+  isQuestionAnswered.value[index] = true;
+};
 </script>
 
 <style scoped>
-h1{
-  font-size: 26px;
-  font-weight: 700px;
-  justify-content: center;
-  margin-left: 200px;
-  margin-bottom: 30px;
+.survey-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
 }
-.content{
- margin-left: 100px;
- font-size: 18px;
+
+h1 {
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 20px;
 }
+
+.question-item {
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: #fff; /* 这里也可以统一设置为白色，不过动态样式已经设置了，这里可以不写 */
+  transition: box-shadow 0.3s ease; /* 为悬浮效果添加过渡动画 */
+}
+
+.question-item:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* 问题悬浮效果 */
+  background-color: rgba(255, 228, 225, 0.5);
+}
+
+.question-item p {
+  margin-bottom: 10px;
+}
+
+.el-radio__input.is-checked + .el-radio__label {
+  background-color: rgba(255, 228, 225, 0.5); /* 选中选项背景变为悬浮时的颜色 */
+  color: inherit; /* 恢复文字颜色为默认 */
+  border-radius: 3px;
+  padding: 2px 5px;
+}
+
+.el-button {
+  margin-top: 20px;
+}
+
 .score-modal {
+  background-color: #fff;
   position: fixed;
   top: 0;
   left: 0;
@@ -243,27 +281,14 @@ h1{
   display: flex;
   justify-content: center;
   align-items: center;
-  color:black;
-  z-index: 9999; /* 确保模态框在最上层 */
+  z-index: 9999;
 }
 
 .score-content {
   background-color: white;
   padding: 20px;
-  border-radius: 8px;
+  border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  line-height: 26px;
+  text-align: center;
 }
-</style>    
-<!-- <template>
-    <div>我是量表内容啦啦啦</div>
-    
-</template>
-
-<script>
-export default{
-
-}
-</script>
-<style lang="less">
-</style> -->
+</style>

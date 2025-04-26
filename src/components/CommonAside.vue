@@ -79,12 +79,12 @@ export default{
                         label: "量表内容",
                         icon: "setting"
                     },
-                    {
-                        path: "/search/result",
-                        name: "searchResult",
-                        label: "量表结果",
-                        icon: "setting"
-                    }
+                    // {
+                    //     path: "/search/result",
+                    //     name: "searchResult",
+                    //     label: "量表结果",
+                    //     icon: "setting"
+                    // }
                 ]
             },
             {

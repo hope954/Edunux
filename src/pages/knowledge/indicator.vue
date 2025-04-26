@@ -1,19 +1,7 @@
-<!-- <template>
-    <div>我是指标体系啦啦啦</div>
-    
-</template>
-
-<script>
-export default{
-
-}
-</script>
-<style lang="less">
-</style> -->
 <template>
     <div>
-        <h2 style="margin: 15px; font-size: 20px; font-weight: 600;">第一个一级指标:课程设置</h2>
-        <table border="1">
+        <h2 style="margin: 30px;margin-left: 120px; font-size: 20px; font-weight: 600;">第一个一级指标:课程设置</h2>
+        <table>
             <thead>
                 <tr>
                     <th>一级指标</th>
@@ -24,7 +12,7 @@ export default{
             <tbody>
                 <!-- 课程教学 -->
                 <tr>
-                    <td rowspan="20">课程设置</td>
+                    <td rowspan="20" class="first-level">课程设置</td>
                     <td rowspan="1">课程性质</td>
                     <!-- <td>课前预习</td> -->
                 </tr>
@@ -79,8 +67,8 @@ export default{
         </table>
     </div>
     <div>
-        <h2 style="margin: 15px; font-size: 20px; font-weight: 600;">第二个一级指标课程教学</h2>
-        <table border="1">
+        <h2 style="margin: 30px;margin-left: 120px; font-size: 20px; font-weight: 600;">第二个一级指标课程教学</h2>
+        <table>
             <thead>
                 <tr>
                     <th>一级指标</th>
@@ -91,7 +79,7 @@ export default{
             <tbody>
                 <!-- 课程教学 -->
                 <tr>
-                    <td rowspan="17">课程教学</td>
+                    <td rowspan="17" class="first-level">课程教学</td>
                     <td rowspan="2">教学前</td>
                     <td>课前预习</td>
                 </tr>
@@ -151,8 +139,8 @@ export default{
         </table>
     </div>
     <div>
-        <h2 style="margin: 15px; font-size: 20px; font-weight: 600;">第三个一级指标课程资源</h2>
-        <table border="1">
+        <h2 style="margin: 30px;margin-left: 120px; font-size: 20px; font-weight: 600;">第三个一级指标课程资源</h2>
+        <table>
             <thead>
                 <tr>
                     <th>一级指标</th>
@@ -163,7 +151,7 @@ export default{
             <tbody>
                 <!-- 课程教学 -->
                 <tr>
-                    <td rowspan="13">课程教学</td>
+                    <td rowspan="13" class="first-level">课程教学</td>
                     <td rowspan="7">教学资源</td>
                     <td>课程PPT</td>
                 </tr>
@@ -216,18 +204,47 @@ export default {
 </script>
 
 <style lang="less" scoped>
-table {
-    width: 100%;
-    border-collapse: collapse;
-    /* 设置表格边框 */
-    border: 1px solid #000; 
+body {
+    background: url('your-purple-pink-image.jpg'); /* 替换为你的粉紫色背景图片路径 */
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
-th, td {
-    padding: 8px;
+table {
+    width: 80%; /* 缩短表格宽度 */
+    border-collapse: collapse;
+    border: 1px solid #e0e0e0;
+    margin: 0 auto 20px; /* 表格水平居中 */
+    background-color: rgba(255, 255, 255, 0.8); /* 表格半透明背景，让背景图透出一些 */
+}
+
+th {
+    background-color: #ffc0cb; /* 浅粉色表头 */
+    font-weight: bold;
+    padding: 12px;
     text-align: center;
     vertical-align: middle;
-    /* 设置表头和单元格边框 */
-    border: 1px solid #000; 
+    border: 1px solid #ffe4e1;
 }
-</style>
+
+td {
+    padding: 10px;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid #ffe4e1;
+}
+
+tr:nth-child(even) {
+    background-color: rgba(255, 228, 225, 0.8); /* 淡粉色偶数行背景 */
+}
+
+tr:hover {
+    background-color: #ffe4e1; /* 鼠标悬停时的背景色 */
+}
+
+.first-level {
+    background-color: rgba(255, 255, 255, 0.5); /* 一级指标颜色和表头一致 */
+   
+}
+
+</style>    

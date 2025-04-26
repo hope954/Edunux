@@ -2,6 +2,9 @@
     <div>
         <el-row class="home" :gutter="20">
             <el-col :span="8">
+                <div id="app">
+                    <ChinaMapDemo />
+                </div>
                 <el-card shadow="hover">
                     <div class="user">
                         <img src="../../assets/image/user.png" alt="">
@@ -25,7 +28,6 @@
                 </el-card>
                 <div id="app">
                     <EchartsDemo />
-                    <ChinaMapDemo />
                 </div>
             </el-col>
             <el-col :span="16"></el-col>

@@ -116,11 +116,12 @@ const routes = [
                         name: 'searchIndex',
                         component: () => import('../pages/search/index.vue')
                     },
-                    {
-                        path: 'result',
-                        name: 'searchResult',
-                        component: () => import('../pages/search/result.vue')
-                    }
+                    // {
+                    //     path: 'result',
+                    //     name: 'searchResult',
+                    //     component: () => import('../pages/search/result.vue'),
+                    //     props:true
+                    // }
                     
                 ]
             },
