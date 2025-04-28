@@ -105,7 +105,7 @@ const downloadResult = () => {
 
 <style scoped>
 .project-result-container {
-  max-width: 1300px;
+  max-width: 1000px;
   border-radius: 15px;
   margin: 0 auto;
   margin-top:40px;

@@ -1,7 +1,7 @@
 <template>
     <div class="dashboard-container">
       <div class="header">
-        <h1>互联网设备可视化平台</h1>
+        <h1 style="font-size:32px;font-weight:600;">双创满意度数据展示</h1>
         <div class="time">{{ currentTime }}</div>
       </div>
   

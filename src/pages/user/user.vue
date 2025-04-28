@@ -63,19 +63,19 @@
           </h2>
           <form @submit.prevent="saveProfile" style="margin-right: 15px;">
             <label for="username">昵称:</label>
-            <input type="text" id="username" v-model="editedUser.username" />
+            <input type="text" id="username" v-model="editedUser.username" style="background:white; color:#333;" />
             <label for="gender">性别:</label>
-            <input type="text" id="gender" v-model="editedUser.gender" />
+            <input type="text" id="gender" v-model="editedUser.gender" style="background:white; color:#333;" />
             <label for="age">年龄:</label>
-            <input type="number" id="age" v-model="editedUser.age" />
+            <input type="number" id="age" v-model="editedUser.age" style="background:white; color:#333;" />
             <label for="university">大学:</label>
-            <input type="text" id="university" v-model="editedUser.university" />
+            <input type="text" id="university" v-model="editedUser.university" style="background:white; color:#333;" />
             <label for="email">邮箱:</label>
-            <input type="email" id="email" v-model="editedUser.email" />
+            <input type="email" id="email" v-model="editedUser.email" style="background:white; color:#333;" />
             <label for="contact">联系方式:</label>
-            <input type="text" id="contact" v-model="editedUser.contact" />
+            <input type="text" id="contact" v-model="editedUser.contact" style="background:white; color:#333;" />
             <label for="introduction">自我介绍:</label>
-            <textarea id="introduction" v-model="editedUser.introduction"></textarea>
+            <textarea id="introduction" v-model="editedUser.introduction" style="background:white; color:#333;"></textarea>
             <button type="submit">
               <i class="fa fa-save"></i> 保存
             </button>
@@ -92,11 +92,11 @@
           </h2>
           <form @submit.prevent="changePassword" style="margin-right: 15px;">
             <label for="oldPassword">旧密码:</label>
-            <input type="password" id="oldPassword" v-model="oldPassword" />
+            <input type="password" id="oldPassword" v-model="oldPassword" style="background:white; color:#333;" />
             <label for="newPassword">新密码:</label>
-            <input type="password" id="newPassword" v-model="newPassword" />
+            <input type="password" id="newPassword" v-model="newPassword" style="background:white; color:#333;" />
             <label for="confirmPassword">确认新密码:</label>
-            <input type="password" id="confirmPassword" v-model="confirmPassword" />
+            <input type="password" id="confirmPassword" v-model="confirmPassword" style="background:white; color:#333;" />
             <button type="submit">
               <i class="fa fa-save"></i> 保存
             </button>
