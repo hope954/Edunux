@@ -1,55 +1,93 @@
 <template>
-    <div>
-        <el-main class="main-content">
-            <p>项目背景</p>
-            <p>随着社会经济的发展和技术的进步，一方面，创新创业课程的需求和满意度研究可能会面临新的挑战和机遇。例如，新的教学方法和技术（如在线学习、模拟创业等）可能会提高教学效果和满意度；</p>
-            <p>另一方面，新的就业市场和创新趋势可能在客观上需要创新创业课程做出相应的调整。</p>
-            <p>任何课程都需要持续改进才能符合经济社会发展趋势，才能满足学生的具体需求。通过定期开展课程满意度调查和需求分析，可以找出创新创业课程的不足与问题，并制定相应的改进策略与优化措施，</p>
-            <p>这将不仅有助于提高课程教学效果与质量，更可以帮助学生有效应对未来的创新创业挑战。</p>
-        </el-main>
+    <div class="main-container">
+        <el-card class="info-card">
+            <template #header>
+                <h3>国家大学生创新创业项目简介</h3>
+            </template>
+            <p>国家大学生创新创业训练计划是教育部牵头实施的国家级大学生实践教育项目，旨在激发高校学生创新活力，培养创新创业能力与团队协作精神。项目面向全国高校本科生，涵盖创新训练项目、创业训练项目、创业实践项目三类：创新训练聚焦学术探索与技术研发，鼓励学生自主设计并完成研究课题；创业训练侧重商业计划构建，引导学生模拟创业全过程；创业实践支持优秀项目落地转化，推动成果从“想法”到“实体”的跨越。项目依托高校组织管理，提供导师指导、经费支持与资源对接，学生通过自主选题、团队协作、实践探索，产出学术论文、专利成果、创业方案或运营实体，助力创新人才培养与产学研深度融合，成为高校实践育人的重要载体。</p>
+        </el-card>
+        <el-card class="info-card">
+            <template #header>
+                <h3>西电创新创业教育现状</h3>
+            </template>
+            <p>西安电子科技大学以电子信息学科优势为依托，构建起“红色基因铸魂、四院协同强基、AI赋能塑形”的高质量创新创业教育体系。学校设立国家级创新创业学院，打造“住宿书院+专业学院+英才学院+双创学院”全空间育人模式，通过300余门专创融合课程、500余名校企导师团队，将双创教育融入人才培养全过程。依托“星火”“鲲鹏”众创空间等载体，累计孵化150余支创业团队，其中79支成功落地，融资超5亿元。学校连续7年斩获中国国际“互联网+”大赛国赛金奖，2024年“SwanLab——大模型时代的全生命周期AI训练工具”项目入选全国优秀项目资源对接会并获投资。通过“青年红色筑梦之旅”品牌活动，349名教师指导9479名学生开展社会实践，相关课程获评国家级一流课程。此外，学校与华为、腾讯等83家企业共建223门校企课程，举办“国际双创实践周”引入海外资源，形成“技术研发—成果转化—产业应用”的闭环生态，2025年启动的校级大创项目培育计划进一步强化重点领域成果产出。</p>
+        </el-card>
+        <el-card class="info-card">
+            <template #header>
+                <h3>创新创业课程满意度及需求调查研究项目背景</h3>
+            </template>
+            <p>随着社会经济的发展和技术的进步，一方面，创新创业课程的需求和满意度研究可能会面临新的挑战和机遇。例如，新的教学方法和技术（如在线学习、模拟创业等）可能会提高教学效果和满意度；另一方面，新的就业市场和创新趋势可能在客观上需要创新创业课程做出相应的调整。</p>
+            <p>任何课程都需要持续改进才能符合经济社会发展趋势，才能满足学生的具体需求。通过定期开展课程满意度调查和需求分析，可以找出创新创业课程的不足与问题，并制定相应的改进策略与优化措施，这将不仅有助于提高课程教学效果与质量，更可以帮助学生有效应对未来的创新创业挑战。</p>
+            <!-- <img :src="url" alt="项目图片"> -->
+            <p>本项目旨在对高校创新创业课程的教学满意度与需求进行调查研究。通过对创新创业课程的特点分析，教学满意度内涵的界定，从教学内容、教学方法、教学效果等方面设计调查问卷，开展调研活动。期望通过对学生在创新创业课程方面的满意度研究，摸清学生对创新创业课程的迫切需求，进一步改革创新创业课程，提升我国创新创业教育质量。鉴于我校创新创业课程现实情况，本项目主要以《创业基础》课程为例。</p>
+        </el-card>
     </div>
 </template>
 
 <script>
-import { progressProps } from 'element-plus';
 import { defineComponent } from 'vue';
-    export default defineComponent({
-        setup(){
-            const url ='../../assets/image/source.png';
-            return{
-                url,
-            }
-        }
-        
-    })
+export default defineComponent({
+    setup() {
+        const url = '../../assets/image/source.png';
+        return {
+            url,
+        };
+    },
+});
 </script>
+
 <style lang="less" scoped>
-.main-content p {
-    white-space: normal; /* 确保文字自动换行 */
-    word-wrap: break-word; /* 允许长单词或 URL 换行 */
-    word-break: break-all; /* 强制在任意位置换行 */
-    font-size: 16px;
-    color: #333;
-    line-height: 26px;
+.main-container {
+    background: linear-gradient(to bottom, #ffe4e1, #e6e6fa);
+    min-height: 100vh;
+    max-width:900px;
+    margin:0 auto;
+    border-radius:15px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
 }
-// .source{
-//     h1{
-       
-//         align-items: center;
-//         padding-bottom: 20px;
-//         font-size: 28px;
-//         margin-bottom: 20px; }
-//         p{
-//             background-color: red;
-//             font-size: 16px;
-//             color: #333;
-//             line-height: 26px;
-//         }
-//         img{
-//             width: 150px;
-//             height: 150px;
-//             border-radius: 50%;
-//             margin-right: 40px;
-//         }
-// }
-</style>
+
+.info-card {
+    width: 80%;
+    max-width: 800px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    padding: 20px;
+    cursor: pointer; /* 鼠标指针变为手型 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* 添加过渡效果 */
+
+    h3 {
+        font-size: 20px;
+        color: #333;
+        margin-bottom: 10px;
+        font-weight: bold; /* 小标题加粗 */
+    }
+
+    p {
+        white-space: normal;
+        word-wrap: break-word;
+        word-break: break-all;
+        font-size: 16px;
+        color: #333;
+        line-height: 26px;
+        margin-bottom: 15px;
+    }
+
+    img {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+        border-radius: 5px;
+        margin: 20px 0;
+    }
+
+    &:hover {
+        transform: translateY(-5px); /* 鼠标悬停时卡片上移 */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 鼠标悬停时增加阴影 */
+    }
+}
+</style>    

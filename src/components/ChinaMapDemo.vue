@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 定义一个容器用于显示中国地图 -->
-    <div id="china-map" style="width:400px;height:500px;">
+    <div id="china-map" style="width:400px;height:400px;">
 
     </div>
   </div>
@@ -47,6 +47,7 @@
           max: 50,
           left: 'left',
           top: 'bottom',
+          label: { show: false },
           text: ['高', '低'],
           calculable: true,
           inRange: {

@@ -1,6 +1,17 @@
 <template>
-    <div>
-        <h2 style="margin: 30px;margin-left: 120px; font-size: 20px; font-weight: 600;">第一个一级指标:课程设置</h2>
+    <div class="model-page-container">
+    <!-- 入口卡片 -->
+    <div v-if="!showPdf" class="entry-card">
+      <h1>欢迎来到知识库！</h1>
+      <p>这是我们项目的指标体系！</p>
+      <el-button type="primary" @click="showPdf = true">进入指标体系</el-button>
+    </div>
+    <!-- PDF 展示区域 -->
+    <div v-else class="pdf-section">
+      <!-- <el-button type="primary" @click="handleClick">显示全文</el-button> -->
+      <div id="pdf-container">
+        <div>
+        <h2 style="margin: 15px;margin-left: 70px; font-size: 20px; font-weight: 600;">第一个一级指标:课程设置</h2>
         <table>
             <thead>
                 <tr>
@@ -67,7 +78,7 @@
         </table>
     </div>
     <div>
-        <h2 style="margin: 30px;margin-left: 120px; font-size: 20px; font-weight: 600;">第二个一级指标课程教学</h2>
+        <h2 style="margin: 15px;margin-left: 70px; font-size: 20px; font-weight: 600;">第二个一级指标课程教学</h2>
         <table>
             <thead>
                 <tr>
@@ -139,7 +150,7 @@
         </table>
     </div>
     <div>
-        <h2 style="margin: 30px;margin-left: 120px; font-size: 20px; font-weight: 600;">第三个一级指标课程资源</h2>
+        <h2 style="margin: 15px;margin-left: 70px; font-size: 20px; font-weight: 600;">第三个一级指标课程资源</h2>
         <table>
             <thead>
                 <tr>
@@ -195,12 +206,90 @@
             </tbody>
         </table>
     </div>
+      </div>
+      <el-button type="primary" @click="downloadPdf">下载指标体系</el-button>
+    </div>
+  </div>
 </template>
 
 <script>
-export default {
+import { defineComponent, onMounted, onBeforeUnmount } from 'vue';
+  import { ref } from 'vue';
+  import * as pdfjsLib from 'pdfjs-dist';
+  import 'pdfjs-dist/web/pdf_viewer.css';
 
-}
+  pdfjsLib.GlobalWorkerOptions.workerSrc = new URL('./assets/pdf.worker.min.js', import.meta.url).href;
+
+  export default defineComponent({
+    setup() {
+      // 本地文件路径（假设 PDF 存放在 src/assets/理论模型.pdf）
+      const pdfUrl = new URL('../../assets/理论模型.pdf', import.meta.url).href;
+      console.log(pdfUrl);
+      const showPdf = ref(false);
+      const handleClick = () => {
+        showPdf.value = true;
+        console.log('showPdf:', showPdf.value);
+      };
+      const downloadPdf = () => {
+        const link = document.createElement('a');
+        link.href = pdfUrl;
+        link.download = '理论模型.pdf'; // 下载时的文件名
+        link.click();
+      };
+
+      // const renderPdf = async () => {
+      //   console.log('开始渲染 PDF');
+      //   const pdfContainer = document.getElementById('pdf-container');
+      //   const loadingTask = pdfjsLib.getDocument(pdfUrl);
+      //   try {
+      //     const pdf = await loadingTask.promise;
+      //     console.log('PDF 文件加载成功');
+      //     for (let pageNumber = 1; pageNumber <= pdf.numPages; pageNumber++) {
+      //       const page = await pdf.getPage(pageNumber);
+      //       console.log(`第 ${pageNumber} 页加载成功`);
+      //       const scale = 1.5;
+      //       const viewport = page.getViewport({ scale: scale });
+      //       const canvas = document.createElement('canvas');
+      //       const context = canvas.getContext('2d');
+      //       canvas.height = viewport.height;
+      //       canvas.width = viewport.width;
+      //       const renderContext = {
+      //         canvasContext: context,
+      //         viewport: viewport
+      //       };
+      //       await page.render(renderContext).promise;
+      //       console.log(`第 ${pageNumber} 页渲染成功`);
+      //       pdfContainer.appendChild(canvas);
+      //     }
+      //   } catch (error) {
+      //     console.error('PDF 渲染出错:', error);
+      //   }
+      // };
+      // onMounted(() => {
+      //   if (showPdf.value) {
+      //     renderPdf();
+      //   }
+      // });
+      const imageArr = new Array(22)
+        .fill("")
+        .map((_image, idx) => {
+          try {
+            // 使用 new URL 导入图片
+            return new URL(`./imgForModel/demo(${idx + 1}).png`, import.meta.url).href;
+          } catch (error) {
+            console.error(`Failed to load image: demo(${idx + 1}).png`, error);
+            return '';
+          }
+        });
+      return {
+        pdfUrl,
+        showPdf,
+        downloadPdf,
+        handleClick,
+        images: [...imageArr],
+      };
+    }
+  });
 </script>
 
 <style lang="less" scoped>
@@ -246,5 +335,75 @@ tr:hover {
     background-color: rgba(255, 255, 255, 0.5); /* 一级指标颜色和表头一致 */
    
 }
+/* 可爱风格样式（粉色+紫色） */
+.model-page-container {
+    background: linear-gradient(to bottom, #ffe4e1, #e6e6fa);
+    /* 渐变背景 */
+    min-height: 300px;
+    max-width: 800px;
+    padding: 30px 20px;
+    border-radius: 15px;
+    margin: 0 auto;
+    .entry-card {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 40px 40px;
+      border-radius: 30px;
+      box-shadow: 0 10px 20px rgba(255, 126, 183, 0.2);
 
+      .el-icon {
+        font-size: 48px;
+        color: #ff7eb7;
+        /* 主色：粉色 */
+        margin-bottom: 20px;
+      }
+
+      h1 {
+        color: #8a2be2;
+        /* 辅色：紫色 */
+        font-size: 32px;
+        font-weight: 600;
+        margin-bottom: 15px;
+      }
+
+      p {
+        color: #555;
+        font-size: 18px;
+        line-height: 1.6;
+        margin-bottom: 30px;
+      }
+
+      .el-button {
+        background: #ff7eb7;
+        border: none;
+        border-radius: 25px;
+        padding: 12px 35px;
+        font-size: 18px;
+        box-shadow: 0 5px 15px rgba(255, 126, 183, 0.3);
+      }
+    }
+
+    .home {
+      margin: 0 0;
+      text-align: center;
+    }
+
+    .pdf-section {
+      margin-top: 0;
+      padding: 20px;
+      color:black;
+
+      canvas {
+        border-radius: 20px;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+      }
+
+      .el-button {
+        background: #8a2be2;
+        /* 下载按钮紫色 */
+        margin-top: 0;
+        box-shadow: 0 5px 5px rgba(138, 43, 226, 0.3);
+      }
+    }
+  }
 </style>    

@@ -1,233 +1,181 @@
-<!-- <template>
-    <div>我是方法啦啦啦</div>
-    
+<template>
+  <div class="model-page-container">
+    <!-- 入口卡片 -->
+    <div v-if="!showPdf" class="entry-card">
+      <h1>欢迎来到知识库！</h1>
+      <p>这是我们项目的评价方法！</p>
+      <el-button type="primary" @click="showPdf = true">进入评价方法</el-button>
+    </div>
+    <!-- PDF 展示区域 -->
+    <div v-else class="pdf-section">
+      <!-- <el-button type="primary" @click="handleClick">显示全文</el-button> -->
+      <div id="pdf-container">
+        <el-row class="home" :gutter="20">
+          <el-col :span="20">
+            <div v-for="image in images">
+              <img :src="image" alt="" height="900" loading="lazy" />
+            </div>
+          </el-col>
+          <el-col :span="40"></el-col>
+        </el-row>
+      </div>
+      <el-button type="primary" @click="downloadPdf">下载评价方法</el-button>
+    </div>
+  </div>
 </template>
 
 <script>
-export default{
+  import { defineComponent, onMounted, onBeforeUnmount } from 'vue';
+  import { ref } from 'vue';
+  import * as pdfjsLib from 'pdfjs-dist';
+  import 'pdfjs-dist/web/pdf_viewer.css';
 
-}
+  pdfjsLib.GlobalWorkerOptions.workerSrc = new URL('./assets/pdf.worker.min.js', import.meta.url).href;
+
+  export default defineComponent({
+    setup() {
+      // 本地文件路径（假设 PDF 存放在 src/assets/理论模型.pdf）
+      const pdfUrl = new URL('../../assets/理论模型.pdf', import.meta.url).href;
+      console.log(pdfUrl);
+      const showPdf = ref(false);
+      const handleClick = () => {
+        showPdf.value = true;
+        console.log('showPdf:', showPdf.value);
+      };
+      const downloadPdf = () => {
+        const link = document.createElement('a');
+        link.href = pdfUrl;
+        link.download = '理论模型.pdf'; // 下载时的文件名
+        link.click();
+      };
+
+      // const renderPdf = async () => {
+      //   console.log('开始渲染 PDF');
+      //   const pdfContainer = document.getElementById('pdf-container');
+      //   const loadingTask = pdfjsLib.getDocument(pdfUrl);
+      //   try {
+      //     const pdf = await loadingTask.promise;
+      //     console.log('PDF 文件加载成功');
+      //     for (let pageNumber = 1; pageNumber <= pdf.numPages; pageNumber++) {
+      //       const page = await pdf.getPage(pageNumber);
+      //       console.log(`第 ${pageNumber} 页加载成功`);
+      //       const scale = 1.5;
+      //       const viewport = page.getViewport({ scale: scale });
+      //       const canvas = document.createElement('canvas');
+      //       const context = canvas.getContext('2d');
+      //       canvas.height = viewport.height;
+      //       canvas.width = viewport.width;
+      //       const renderContext = {
+      //         canvasContext: context,
+      //         viewport: viewport
+      //       };
+      //       await page.render(renderContext).promise;
+      //       console.log(`第 ${pageNumber} 页渲染成功`);
+      //       pdfContainer.appendChild(canvas);
+      //     }
+      //   } catch (error) {
+      //     console.error('PDF 渲染出错:', error);
+      //   }
+      // };
+      // onMounted(() => {
+      //   if (showPdf.value) {
+      //     renderPdf();
+      //   }
+      // });
+      const imageArr = new Array(22)
+        .fill("")
+        .map((_image, idx) => {
+          try {
+            // 使用 new URL 导入图片
+            return new URL(`./imgForModel/demo(${idx + 1}).png`, import.meta.url).href;
+          } catch (error) {
+            console.error(`Failed to load image: demo(${idx + 1}).png`, error);
+            return '';
+          }
+        });
+      return {
+        pdfUrl,
+        showPdf,
+        downloadPdf,
+        handleClick,
+        images: [...imageArr],
+      };
+    }
+  });
 </script>
-<style lang="less">
-</style> -->
-<template>
-    <div class="data-dashboard">
-      <!-- 顶部信息栏 -->
-      <div class="top-info">
-        <span>大数据可视化展板通用模板</span>
-        <span>2020年1月21 - 15时43分29秒</span>
-      </div>
-      <!-- 中间内容区域 -->
-      <div class="middle-content">
-        <!-- 收入支出图表区域 -->
-        <div class="income-expense-chart">
-          <h2 class="module-title">模块标题样式</h2>
-          <div class="data-numbers">
-            <span>12581189</span>
-            <span>3912410</span>
-          </div>
-          <div class="chart-labels">
-            <span>2018年总收入情况</span>
-            <span>2018年总支出情况</span>
-          </div>
-          <div id="income-expense-bar-chart"></div>
-        </div>
-        <!-- 地区相关图表区域 -->
-        <div class="region-chart">
-          <h2 class="module-title">模块标题样式</h2>
-          <div id="region-bar-chart"></div>
-        </div>
-        <!-- 分布图表区域 -->
-        <div class="distribution-charts">
-          <div class="single-distribution-chart">
-            <h2 class="module-title">年龄分布</h2>
-            <div id="age-pie-chart"></div>
-          </div>
-          <div class="single-distribution-chart">
-            <h2 class="module-title">职业分布</h2>
-            <div id="occupation-pie-chart"></div>
-          </div>
-          <div class="single-distribution-chart">
-            <h2 class="module-title">兴趣分布</h2>
-            <div id="interest-pie-chart"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </template>
-  
-  <script>
-  import * as echarts from 'echarts';
-  
-  export default {
-    mounted() {
-      this.initIncomeExpenseChart();
-      this.initRegionChart();
-      this.initAgeChart();
-      this.initOccupationChart();
-      this.initInterestChart();
-    },
-    methods: {
-      initIncomeExpenseChart() {
-        const chartDom = document.getElementById('income-expense-bar-chart');
-        const myChart = echarts.init(chartDom);
-        const option = {
-          xAxis: {
-            type: 'category',
-            data: ['商招门店', '教育培训', '房地产', '生活服务', '汽车销售', '旅游酒店', '五金建材']
-          },
-          yAxis: {
-            type: 'value'
-          },
-          series: [
-            {
-              name: '2018年总收入',
-              data: [1500, 1200, 900, 600, 300, 0, 0],
-              type: 'bar'
-            },
-            {
-              name: '2018年总支出',
-              data: [0, 0, 0, 0, 0, 0, 0],
-              type: 'bar'
-            }
-          ]
-        };
-        myChart.setOption(option);
-      },
-      initRegionChart() {
-        const chartDom = document.getElementById('region-bar-chart');
-        const myChart = echarts.init(chartDom);
-        const option = {
-          xAxis: {
-            type: 'category',
-            data: ['浙江', '上海', '江苏', '广东', '北京', '深圳', '安徽', '四川']
-          },
-          yAxis: {
-            type: 'value'
-          },
-          series: [
-            {
-              name: '数据',
-              data: [1500, 1200, 900, 600, 300, 0, 0, 0],
-              type: 'bar'
-            }
-          ]
-        };
-        myChart.setOption(option);
-      },
-      initAgeChart() {
-        const chartDom = document.getElementById('age-pie-chart');
-        const myChart = echarts.init(chartDom);
-        const option = {
-          series: [
-            {
-              type: 'pie',
-              data: [
-                { value: 30, name: '0 - 19岁' },
-                { value: 20, name: '20 - 29岁' },
-                { value: 25, name: '30 - 39岁' },
-                { value: 15, name: '40 - 49岁' },
-                { value: 10, name: '50岁以上' }
-              ]
-            }
-          ]
-        };
-        myChart.setOption(option);
-      },
-      initOccupationChart() {
-        const chartDom = document.getElementById('occupation-pie-chart');
-        const myChart = echarts.init(chartDom);
-        const option = {
-          series: [
-            {
-              type: 'pie',
-              data: [
-                { value: 25, name: '电子商务' },
-                { value: 20, name: '教育' },
-                { value: 15, name: '汽车' },
-                { value: 10, name: '旅游' },
-                { value: 10, name: '财经' },
-                { value: 10, name: 'IT/互联网' },
-                { value: 5, name: '金融' },
-                { value: 5, name: '教育软件' },
-                { value: 10, name: '其他' }
-              ]
-            }
-          ]
-        };
-        myChart.setOption(option);
-      },
-      initInterestChart() {
-        const chartDom = document.getElementById('interest-pie-chart');
-        const myChart = echarts.init(chartDom);
-        const option = {
-          series: [
-            {
-              type: 'pie',
-              data: [
-                { value: 30, name: '学生' },
-                { value: 70, name: '其他' }
-              ]
-            }
-          ]
-        };
-        myChart.setOption(option);
+
+<style lang="less" scoped>
+
+  /* 可爱风格样式（粉色+紫色） */
+  .model-page-container {
+    background: linear-gradient(to bottom, #ffe4e1, #e6e6fa);
+    /* 渐变背景 */
+    min-height: 300px;
+    max-width: 800px;
+    padding: 30px 20px;
+    border-radius: 15px;
+    margin: 0 auto;
+    .entry-card {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 40px 40px;
+      border-radius: 30px;
+      box-shadow: 0 10px 20px rgba(255, 126, 183, 0.2);
+
+      .el-icon {
+        font-size: 48px;
+        color: #ff7eb7;
+        /* 主色：粉色 */
+        margin-bottom: 20px;
+      }
+
+      h1 {
+        color: #8a2be2;
+        /* 辅色：紫色 */
+        font-size: 32px;
+        font-weight: 600;
+        margin-bottom: 15px;
+      }
+
+      p {
+        color: #555;
+        font-size: 18px;
+        line-height: 1.6;
+        margin-bottom: 30px;
+      }
+
+      .el-button {
+        background: #ff7eb7;
+        border: none;
+        border-radius: 25px;
+        padding: 12px 35px;
+        font-size: 18px;
+        box-shadow: 0 5px 15px rgba(255, 126, 183, 0.3);
       }
     }
-  };
-  </script>
-  
-  <style scoped>
-  .data-dashboard {
-    font-family: Arial, sans-serif;
-    padding: 20px;
+
+    .home {
+      margin: 0 0;
+      text-align: center;
+    }
+
+    .pdf-section {
+      margin-top: 0;
+      padding-top:20px;
+      padding-left: 60px;
+      padding-right: 60px;
+
+      canvas {
+        border-radius: 20px;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+      }
+
+      .el-button {
+        background: #8a2be2;
+        /* 下载按钮紫色 */
+        margin-top: 0;
+        box-shadow: 0 5px 5px rgba(138, 43, 226, 0.3);
+      }
+    }
   }
-  
-  .top-info {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-  }
-  
-  .middle-content {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .income-expense-chart,
-  .region-chart,
-  .distribution-charts {
-    background-color: #fff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    padding: 20px;
-  }
-  
-  .module-title {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .data-numbers {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-  }
-  
-  .chart-labels {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-  }
-  
-  .distribution-charts {
-    display: flex;
-    flex-direction: column;
-    width: 30%;
-  }
-  
-  .single-distribution-chart {
-    margin-bottom: 20px;
-  }
-  </style>
+</style>

@@ -105,9 +105,11 @@ const downloadResult = () => {
 
 <style scoped>
 .project-result-container {
-  max-width: 1200px;
+  max-width: 1300px;
+  border-radius: 15px;
   margin: 0 auto;
-  padding: 40px;
+  margin-top:40px;
+  padding: 45px;
   font-family: Arial, sans-serif; /* 修改字体 */
   background-color: #fce4ec; /* 修改背景颜色 */
 }
@@ -122,7 +124,7 @@ const downloadResult = () => {
 .result-cards {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  gap: 40px;
 }
 
 .result-card {

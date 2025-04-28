@@ -3,42 +3,34 @@
         <el-row class="home" :gutter="20">
             <el-col :span="20">
                 <div v-for="image in images">
-                        <img :src="image" alt="" height="500" loading="lazy" />
+                    <img :src="image" alt="" height="500" loading="lazy" />
                 </div>
-                        <img src="../../assets/image/week.png" alt="">
-                <!-- <el-card shadow="hover">
-                    <div class="user">
-                        
-                        <div class="userinfo">
-                        <p class="name">admin</p>
-                        <p class="role">超级管理院</p>
-                    </div> 
-                    </div>
-
-                    <<div class="login-info">
-                    <p>时间<span>2025-4-01</span></p>
-                    <p>地点<span>西安</span></p>
-                    
-                </div> 
-                </el-card> -->
-                
-                <!-- <el-card shadow="hover" style="margin-top: 20px; height: 450px;">
-                <el-table :data="tableData">
-                    <el-table-column
-                    v-for="(val,key) in tableLabel" :key="key" :prop="key" :label="val">
-
-                    </el-table-column>
-                </el-table>
-            </el-card> -->
+                <img src="../../assets/image/week.png" alt="">
+                <!-- 时间轴部分 -->
+                <div class="timeline-box">
+                    <el-timeline>
+                        <el-timeline-item
+                            v-for="(item, index) in timelineData"
+                            :key="index"
+                            :color="item.color"
+                        >
+                            <template #dot>
+                                <i class="el-icon-clock"></i>
+                            </template>
+                            <div class="timeline-content">
+                                <p>{{ item.time }}</p>
+                                <p>{{ item.content }}</p>
+                            </div>
+                        </el-timeline-item>
+                    </el-timeline>
+                </div>
             </el-col>
             <el-col :span="40"></el-col>
         </el-row>
     </div>
-
 </template>
 
 <script>
-import { progressProps } from 'element-plus';
 import { defineComponent } from 'vue';
 export default defineComponent({
     setup() {
@@ -53,16 +45,37 @@ export default defineComponent({
                     return '';
                 }
             });
-            // ((_image, idx) => `./imgs/demo(${idx + 1}).png`);
+
+        const timelineData = [
+            { time: '2025-04-01', content: '事件 1', color: '#ff69b4' },
+            { time: '2025-04-02', content: '事件 2', color: '#87cefa' },
+            { time: '2025-04-03', content: '事件 3', color: '#98fb98' }
+        ];
+
         return {
             images: [...imageArr],
+            timelineData
         };
     }
 })
 </script>
+
 <style lang="less" scoped>
-.home{
+.home {
     margin: auto;
     text-align: center;
+}
+
+.timeline-box {
+    background: linear-gradient(to bottom, #ffe4e1, #e6e6fa);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+    display: inline-block;
+}
+
+.timeline-content {
+    text-align: left;
 }
 </style>

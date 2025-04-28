@@ -100,7 +100,7 @@ export default{
                     {
                         path: "/project/week",
                         name: "projectWeek",
-                        label: "项目周期",
+                        label: "项目规划",
                         icon: "setting"
                     },
                     {
