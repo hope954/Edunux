@@ -12,7 +12,7 @@
       <div id="pdf-container">
         <el-row class="home" :gutter="20">
           <el-col :span="20">
-            <div v-for="image in images">
+            <div v-for="image in images" :key="index">
               <img :src="image" alt="" height="900" loading="lazy" />
             </div>
           </el-col>
