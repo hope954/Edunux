@@ -105,7 +105,6 @@
 </script>
 
 <style lang="less" scoped>
-
   /* 可爱风格样式（粉色+紫色） */
   .model-page-container {
     background: linear-gradient(to bottom, #ffe4e1, #e6e6fa);

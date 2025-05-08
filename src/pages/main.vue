@@ -45,6 +45,8 @@ export default defineComponent({
   // overflow: scroll;//给页面增加滚动条，但样式上不够美观，在排查页面不能下拉的过程中添加用于测试的
   // height: 100%;
   // width: 100%;
+  margin-top: 60px;
+  min-width: 1024px;
   & > .el-container{
     // height: 100%;
     // width: 100%;

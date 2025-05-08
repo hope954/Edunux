@@ -32,72 +32,83 @@
     </el-header>
 </template>
 <script>
-import { defineComponent } from 'vue';
-import {useStore} from 'vuex'
-import { useRouter } from 'vue-router';
-export default{
-    setup(){
-        let store = useStore()
-        //写一个函数实现静态资源的引入
-        const getImgSrc =(user)=>{
-            return new URL (`../assets/image/${user}.png`, import.meta.url).href;
-        };
-        let handleCollpase=()=>{
-            store.commit("updateIsCollapse");
-        };
-        const goToUserPage = () => {
-            router.push({
-                name:"user"
-            });
-        };
-        return{
-            getImgSrc,
-            handleCollpase,
-            goToUserPage
-        };
+    import { defineComponent } from 'vue';
+    import { useStore } from 'vuex'
+    import { useRouter } from 'vue-router';
+    export default {
+        setup() {
+            let store = useStore()
+            //写一个函数实现静态资源的引入
+            const getImgSrc = (user) => {
+                return new URL(`../assets/image/${user}.png`, import.meta.url).href;
+            };
+            let handleCollpase = () => {
+                store.commit("updateIsCollapse");
+            };
+            const goToUserPage = () => {
+                router.push({
+                    name: "user"
+                });
+            };
+            return {
+                getImgSrc,
+                handleCollpase,
+                goToUserPage
+            };
+        }
     }
-}
 </script>
 <style lang="less" scoped>
-header{
-    --el-header-padding: 0 0;
-    display: flex;
-    justify-content: space-between;
-    align-items:center;
-    width: 100%;
-    // width: auto; /* 确保头部宽度自适应 */
-    height: 100%; /* 确保头部高度自适应 */
-    // height: 100%;
-    padding-top: 10px;
-    padding-right: 20px;
-    padding-bottom: 10px;
-    padding-left: 0px;
-    background-color: #333;
-  }
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        /* 确保高于侧边栏的层级 */
+        --el-header-padding: 0 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        // width: auto; /* 确保头部宽度自适应 */
+        // height: 100%;
+        /* 确保头部高度自适应 */
+        // height: 100%;
+        padding-top: 10px;
+        padding-right: 20px;
+        padding-bottom: 10px;
+        padding-left: 0px;
+        background-color: #333;
+    }
 
-  .sidebar {
-    width: 100%;
-    min-width: auto;
-  }
-.r-content{
-    .user{
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        // margin-right:20px;
+    .sidebar {
+        width: 100%;
+        min-width: auto;
     }
-}
-.l-content{
-    display: flex;
-    align-items: center;
-    .el-button{
-        margin-right:20px;
-        margin-left: 20px;
+
+    .r-content {
+        .user {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            // margin-right:20px;
+        }
     }
-    h3{
-        color: #fff;
+
+    .l-content {
+        display: flex;
+        align-items: center;
+
+        .el-button {
+            margin-right: 20px;
+            margin-left: 20px;
+        }
+
+        h3 {
+            color: #fff;
+        }
     }
-}
 
 
 </style>
