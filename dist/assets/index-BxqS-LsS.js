@@ -1,0 +1,1 @@
+import{_ as t,f as r,o as s,a as n,b as a,r as c,F as d}from"./index-PhgmcFAE.js";const p={methods:{}};function _(i,e,l,m,u,f){const o=c("router-view");return s(),r(d,null,[e[0]||(e[0]=n("div",{id:"search"},null,-1)),a(o)],64)}const x=t(p,[["render",_]]);export{x as default};
