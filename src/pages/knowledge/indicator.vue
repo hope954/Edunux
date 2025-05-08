@@ -207,7 +207,7 @@
         </table>
     </div>
       </div>
-      <el-button type="primary" @click="downloadPdf">下载指标体系</el-button>
+      <el-button type="primary" @click="downloadPdf">下载指标总表</el-button>
     </div>
   </div>
 </template>
@@ -223,7 +223,7 @@ import { defineComponent, onMounted, onBeforeUnmount } from 'vue';
   export default defineComponent({
     setup() {
       // 本地文件路径（假设 PDF 存放在 src/assets/理论模型.pdf）
-      const pdfUrl = new URL('../../assets/理论模型.pdf', import.meta.url).href;
+      const pdfUrl = new URL('../../assets/指标总表.pdf', import.meta.url).href;
       console.log(pdfUrl);
       const showPdf = ref(false);
       const handleClick = () => {
@@ -233,7 +233,7 @@ import { defineComponent, onMounted, onBeforeUnmount } from 'vue';
       const downloadPdf = () => {
         const link = document.createElement('a');
         link.href = pdfUrl;
-        link.download = '理论模型.pdf'; // 下载时的文件名
+        link.download = '指标总表.pdf'; // 下载时的文件名
         link.click();
       };
 
@@ -270,23 +270,23 @@ import { defineComponent, onMounted, onBeforeUnmount } from 'vue';
       //     renderPdf();
       //   }
       // });
-      const imageArr = new Array(22)
-        .fill("")
-        .map((_image, idx) => {
-          try {
-            // 使用 new URL 导入图片
-            return new URL(`./imgForModel/demo(${idx + 1}).png`, import.meta.url).href;
-          } catch (error) {
-            console.error(`Failed to load image: demo(${idx + 1}).png`, error);
-            return '';
-          }
-        });
+    //   const imageArr = new Array(22)
+    //     .fill("")
+    //     .map((_image, idx) => {
+    //       try {
+    //         // 使用 new URL 导入图片
+    //         return new URL(`./imgForModel/demo(${idx + 1}).png`, import.meta.url).href;
+    //       } catch (error) {
+    //         console.error(`Failed to load image: demo(${idx + 1}).png`, error);
+    //         return '';
+    //       }
+    //     });
       return {
         pdfUrl,
         showPdf,
         downloadPdf,
         handleClick,
-        images: [...imageArr],
+        // images: [...imageArr],
       };
     }
   });
