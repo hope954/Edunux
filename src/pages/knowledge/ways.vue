@@ -35,7 +35,7 @@
   export default defineComponent({
     setup() {
       // 本地文件路径（假设 PDF 存放在 src/assets/理论模型.pdf）
-      const pdfUrl = new URL('../../assets/理论模型.pdf', import.meta.url).href;
+      const pdfUrl = new URL('../../assets/评价方法.pdf', import.meta.url).href;
       console.log(pdfUrl);
       const showPdf = ref(false);
       const handleClick = () => {
@@ -45,7 +45,7 @@
       const downloadPdf = () => {
         const link = document.createElement('a');
         link.href = pdfUrl;
-        link.download = '理论模型.pdf'; // 下载时的文件名
+        link.download = '评价方法.pdf'; // 下载时的文件名
         link.click();
       };
 
@@ -87,7 +87,7 @@
         .map((_image, idx) => {
           try {
             // 使用 new URL 导入图片
-            return new URL(`./imgForModel/demo(${idx + 1}).png`, import.meta.url).href;
+            return new URL(`./imgsForways/demo(${idx + 1}).png`, import.meta.url).href;
           } catch (error) {
             console.error(`Failed to load image: demo(${idx + 1}).png`, error);
             return '';
