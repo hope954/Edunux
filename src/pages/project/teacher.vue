@@ -97,6 +97,7 @@
   .faculty-profile {
     max-width: 1200px;
     margin: 0 auto;
+    margin: 20px;
     padding: 20px;
     background:linear-gradient(to bottom, #ffe4e1, #e6e6fa);;
     border-radius: 8px;
