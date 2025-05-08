@@ -21,5 +21,6 @@
   <style scoped>
     .dashboard-container {
       margin: 0 auto; 
+      width: 1600px;
     }
   </style>
