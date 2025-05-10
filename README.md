@@ -1,5 +1,106 @@
-# Vue 3 + Vite
+# 双创管理网站项目说明
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## 一、项目概述
+本项目是一个面向创新创业教育的管理网站，旨在收集创新创业课程的满意度和需求信息，同时展示项目相关的知识、规划、成员和成果。网站主要包含知识库、调查量表、项目概况等核心板块，为创新创业教育的改进和优化提供有力支持。
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+## 二、功能模块
+
+### 1.首页
+- **数据可视化大屏**：通过数据可视化大屏，动态展现调查问卷的数据。
+
+### 2. 用户
+- **用户信息**：展示用户的基本信息，用户可以在这里进行查看和修改的操作。
+
+### 3. 知识库
+- **理论模型**：提供项目的理论模型介绍，以 PDF 格式展示，方便用户深入了解项目的理论基础。
+- **评价方法**：展示项目的评价方法，同样以 PDF 格式呈现，用户可在线查看或下载。
+- **指标体系**：通过表格形式展示创新创业课程的评价指标，包括一级、二级和三级指标，清晰明了。
+
+### 4. 调查量表
+- **量表首页**：介绍调查的目的、时间和联系方式，引导用户开始答题。
+- **量表内容**：包含多个问题，涉及教学资源、教学效果、课程资源等方面，用户可进行答题。
+
+### 5. 项目概况
+- **项目来源**：介绍项目的背景和来源。
+- **项目规划**：以时间轴形式展示项目的各个阶段和预期成果，包括满意度调研、需求调研、改进方案规划等。
+- **项目组成员**：展示项目组成员的信息，包括姓名、角色和职责。
+- **项目指导教师**：介绍项目的指导教师信息。
+- **项目成果**：展示项目的各项成果，如调查问卷、研究报告、宣传网站等，用户可点击下载。
+
+## 三、技术栈
+- **前端框架**：Vue.js
+- **UI 组件库**：ElementPlus
+- **图表库**：ECharts、山海鲸可视化
+- **PDF 处理库**：pdfjs-dist
+
+## 四、代码结构
+```
+src/
+├── assets/         # 静态资源
+│   ├── image/      # 图片资源
+│   └── less/       # 样式文件
+├── components/     # 组件
+│   ├── CommonHeader.vue  # 公共头部组件
+│   ├── CommonAside.vue   # 公共侧边栏组件
+│   ├── EchartsDemo.vue   # ECharts 示例组件
+│   └── barCharts.vue     # 柱状图组件
+├── pages/          # 页面
+│   ├── main.vue        # 主页面
+│   ├── knowledge/      # 知识库页面
+│   │   ├── model.vue       # 理论模型页面
+│   │   ├── ways.vue        # 评价方法页面
+│   │   └── indicator.vue   # 指标体系页面
+│   ├── search/         # 调查量表页面
+│   │   ├── index.vue       # 量表首页
+│   │   ├── content.vue     # 量表内容页面
+│   │   └── result.vue      # 量表结果页面
+│   ├── project/        # 项目概况页面
+│   │   ├── source.vue      # 项目来源页面
+│   │   ├── week.vue        # 项目规划页面
+│   │   ├── member.vue      # 项目组成员页面
+│   │   ├── teacher.vue     # 项目指导教师页面
+│   │   └── result.vue      # 项目成果页面
+│   └── user.vue        # 用户页面
+├── router/         # 路由配置
+│   └── index.js
+├── store/          # 状态管理
+│   └── index.js
+└── main.js         # 入口文件
+```
+
+## 五、安装与运行
+1. 克隆项目到本地：
+```bash
+git clone [项目仓库地址]
+```
+2. 进入项目目录：
+```bash
+cd [项目目录名]
+```
+3. 安装依赖：
+```bash
+npm install
+```
+4. 启动开发服务器：
+```bash
+npm run dev
+```
+5. 打开浏览器，访问 `http://localhost:8080` 即可查看网站。
+
+## 六、部署
+可以将项目打包成静态文件，然后部署到服务器上。打包命令如下：
+```bash
+npm run build
+```
+打包完成后，会在项目根目录下生成一个 `dist` 文件夹，将该文件夹中的文件上传到服务器即可。
+
+## 七、注意事项
+- 确保你的 Node.js 版本在 14.x 以上。
+- 项目中的 PDF 文件路径需要根据实际情况进行调整。
+- 如果遇到跨域问题，可以在开发环境中配置代理，在生产环境中配置服务器的 CORS 策略。
+
+## 八、贡献
+如果你对本项目有任何建议或改进意见，欢迎提交 Pull Request 或 Issue。
+
+## 九、版权信息
+本项目遵循 [开源协议名称] 协议，具体内容请参考 `LICENSE` 文件。

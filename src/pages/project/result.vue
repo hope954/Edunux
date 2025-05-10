@@ -40,37 +40,41 @@ import { ref } from 'vue';
 // 模拟项目成果数据
 const results = ref([
   {
-    name: '成果一：创新教学方法实践报告',
+    name: '成果一：面向学生的线上电子调查问卷一份',
     fileUrl: ' http://172.20.10.2:8082/results/result1.pdf' 
   },
   {
-    name: '成果二：智能教学平台设计方案',
+    name: '成果二：面向教师的线上电子调查问卷一份',
     fileUrl: ' http://172.20.10.2:8082/results/result1.pdf' 
   },
   {
-    name: '成果三：创新创业案例集',
+    name: '成果三：线下纸质调研访谈问卷一份',
     fileUrl: ' http://172.20.10.2:8082/results/result1.pdf' 
   },
   {
-    name: '成果四：学生创新作品展示',
+    name: '成果四：项目调查报告一份',
     fileUrl: ' http://172.20.10.2:8082/results/result1.pdf' 
   },
   {
-    name: '成果五：教学资源整合方案',
+    name: '成果五：教师需求报告一份',
     fileUrl: ' http://172.20.10.2:8082/results/result1.pdf' 
   },
   {
-    name: '成果六：创新实践活动总结',
+    name: '成果六：项目研究报告一份',
     fileUrl: ' http://172.20.10.2:8082/results/result1.pdf' 
   },
   {
-    name: '成果七：教育技术应用研究报告',
+    name: '成果七：项目宣传网站一个',
     fileUrl: ' http://172.20.10.2:8082/results/result1.pdf' 
   },
   {
-    name: '成果八：课程改革成果汇报',
+    name: '成果八：小论文《创新创业课程满意度评价体系研究》一篇',
     fileUrl: ' http://172.20.10.2:8082/results/result1.pdf' 
-  }
+  },
+  {
+    name: '成果九：小论文《基于SEM的高校创新创业课程满意度影响因素研究》一篇',
+    fileUrl: ' http://172.20.10.2:8082/results/result1.pdf' 
+  },
 ]);
 
 // 控制模态框显示与隐藏
@@ -123,7 +127,7 @@ const downloadResult = () => {
 
 .result-cards {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 40px;
 }
 
